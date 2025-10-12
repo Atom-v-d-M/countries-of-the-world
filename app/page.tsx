@@ -3,38 +3,54 @@
 import styles from "./page.module.scss";
 import { Map } from "@vis.gl/react-maplibre";
 import { useRef, useState } from "react";
+import countryData from "./countryData.json";
+
+// Create allowedCountries array from JSON data
+const allowedCountries = countryData.map(country => country.primaryName);
+
 
 export default function Home() {
   const mapRef = useRef<any>(null);
-  const [labelsVisible, setLabelsVisible] = useState(true);
 
-  // List of all 197 countries in the world
-  const allowedCountries = [
-    // North America
-    'United States', 'Canada', 'Mexico', 'Guatemala', 'Belize', 'El Salvador', 'Honduras', 'Nicaragua', 'Costa Rica', 'Panama',
-    
-    // South America
-    'Brazil', 'Argentina', 'Chile', 'Peru', 'Colombia', 'Venezuela', 'Ecuador', 'Bolivia', 'Paraguay', 'Uruguay', 'Guyana', 'Suriname',
-    
-    // Europe
-    'United Kingdom', 'France', 'Germany', 'Italy', 'Spain', 'Portugal', 'Netherlands', 'Belgium', 'Luxembourg', 'Switzerland', 'Austria', 'Czech Republic', 'Slovakia', 'Poland', 'Hungary', 'Slovenia', 'Croatia', 'Bosnia and Herzegovina', 'Serbia', 'Montenegro', 'Albania', 'North Macedonia', 'Bulgaria', 'Romania', 'Moldova', 'Ukraine', 'Belarus', 'Lithuania', 'Latvia', 'Estonia', 'Finland', 'Sweden', 'Norway', 'Denmark', 'Iceland', 'Ireland', 'Malta', 'Cyprus', 'Greece', 'Turkey', 'Russia',
-    
-    // Asia
-    'China', 'Japan', 'South Korea', 'North Korea', 'Mongolia', 'Kazakhstan', 'Uzbekistan', 'Turkmenistan', 'Tajikistan', 'Kyrgyzstan', 'Afghanistan', 'Pakistan', 'India', 'Nepal', 'Bhutan', 'Bangladesh', 'Sri Lanka', 'Maldives', 'Myanmar', 'Thailand', 'Laos', 'Cambodia', 'Vietnam', 'Malaysia', 'Singapore', 'Indonesia', 'Philippines', 'Brunei', 'East Timor', 'Taiwan', 'Hong Kong', 'Macau',
-    
-    // Middle East
-    'Saudi Arabia', 'United Arab Emirates', 'Qatar', 'Bahrain', 'Kuwait', 'Oman', 'Yemen', 'Iraq', 'Iran', 'Israel', 'Palestine', 'Jordan', 'Lebanon', 'Syria', 'Turkey',
-    
-    // Africa
-    'Egypt', 'Libya', 'Tunisia', 'Algeria', 'Morocco', 'Sudan', 'South Sudan', 'Ethiopia', 'Eritrea', 'Djibouti', 'Somalia', 'Kenya', 'Uganda', 'Tanzania', 'Rwanda', 'Burundi', 'Democratic Republic of the Congo', 'Republic of the Congo', 'Central African Republic', 'Chad', 'Cameroon', 'Nigeria', 'Niger', 'Mali', 'Burkina Faso', 'Ghana', 'Togo', 'Benin', 'Côte d\'Ivoire', 'Liberia', 'Sierra Leone', 'Guinea', 'Guinea-Bissau', 'Senegal', 'Gambia', 'Mauritania', 'Cape Verde', 'São Tomé and Príncipe', 'Equatorial Guinea', 'Gabon', 'Angola', 'Zambia', 'Malawi', 'Mozambique', 'Madagascar', 'Mauritius', 'Seychelles', 'Comoros', 'South Africa', 'Lesotho', 'Swaziland', 'Botswana', 'Namibia', 'Zimbabwe',
-    
-    // Oceania
-    'Australia', 'New Zealand', 'Papua New Guinea', 'Fiji', 'Solomon Islands', 'Vanuatu', 'Samoa', 'Tonga', 'Kiribati', 'Tuvalu', 'Nauru', 'Palau', 'Marshall Islands', 'Micronesia', 'Cook Islands', 'Niue'
-  ];
+  const [foundCountries, setFoundCountries] = useState<string[]>([])
+  const [labelsVisible, setLabelsVisible] = useState(true);
+  const [searchInput, setSearchInput] = useState<string>('');
+
+  // Handle search input change
+  const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchInput(e.target.value);
+  };
+
+  // Handle search on Enter key press
+  const handleSearchSubmit = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      console.log('Search input:', searchInput);
+
+      // Search for matching countries
+      const searchTerm = searchInput.toLowerCase().trim();
+      const matchingCountries = countryData.filter(country => {
+        // Check primary name (exact match)
+        if (country.primaryName.toLowerCase() === searchTerm) {
+          return true;
+        }
+        // Check alternative names (exact match)
+        return country.alternativeNames.some(altName => 
+          altName.toLowerCase() === searchTerm
+        );
+      });
+
+      if (matchingCountries.length > 0) {
+        console.log('Found matching countries:', matchingCountries.map(c => c.primaryName));
+      } else {
+        console.log('No countries found matching:', searchTerm);
+      }
+      
+      setSearchInput(''); // Clear the input
+    }
+  };
 
   // Helper function to identify country labels
   const isCountryLabel = (layer: any) => {
-    console.log("layer", layer)
     // First check if it's a symbol layer that could contain country names
     const isSymbolLayer = layer.type === 'symbol';
     const hasTextField = layer.layout && layer.layout['text-field'];
@@ -63,14 +79,6 @@ export default function Home() {
     const map = event.target;
     mapRef.current = map;
 
-    // Debug: Log all symbol layers to help identify country labels
-    // console.log('Available symbol layers:');
-    // map.getStyle().layers.forEach((layer: any) => {
-    //   if (layer.type === 'symbol') {
-    //     console.log(layer, `- ${layer.id}:`, layer.layout?.['text-field']);
-    //   }
-    // });
-
     // Show only country labels, hide all other symbol layers
     map.getStyle().layers.forEach((layer: any) => {
       if (layer.type === 'symbol') {
@@ -95,9 +103,9 @@ export default function Home() {
               ['get', 'admin'],
               ['get', 'ADMIN']
             ]);
-            console.log(`Set English text field for: ${layer.id}`);
+            // console.log(`Set English text field for: ${layer.id}`);
           } catch (error) {
-            console.log(`Could not set text field for ${layer.id}:`, error);
+            // console.log(`Could not set text field for ${layer.id}:`, error);
           }
           
           // Apply filter to only show specific countries
@@ -119,28 +127,14 @@ export default function Home() {
               ['in', ['get', 'ADMIN'], ['literal', allowedCountries]]
             ];
             map.setFilter(layer.id, filter);
-            console.log(`Applied multi-property country filter to: ${layer.id}`);
+            // console.log(`Applied multi-property country filter to: ${layer.id}`);
           } catch (error) {
-            console.log(`Could not apply filter to ${layer.id}:`, error);
+            // console.log(`Could not apply filter to ${layer.id}:`, error);
             // If filtering fails, we'll show all country labels
           }
         }
       }
     });
-  };
-
-  const handleZoom = () => {
-    if (!mapRef.current) return;
-    
-    const zoom = mapRef.current.getZoom();
-    
-    // mapRef.current.getStyle().layers.forEach((layer: any) => {
-    //   if (layer.type === 'symbol') {
-    //     // Show country labels at zoom 3+, hide others
-    //     const shouldShow = isCountryLabel(layer) && zoom >= 6;
-    //     mapRef.current.setLayoutProperty(layer.id, 'visibility', shouldShow ? 'visible' : 'none');
-    //   }
-    // });
   };
 
   const toggleLabels = () => {
@@ -152,8 +146,27 @@ export default function Home() {
       if (layer.type === 'symbol') {
         // Only toggle country labels
         if (isCountryLabel(layer)) {
-          const newVisibility = labelsVisible ? 'none' : 'visible';
-          mapRef.current.setLayoutProperty(layer.id, 'visibility', newVisibility);
+          if (labelsVisible) {
+            // Hide labels - show question marks
+            mapRef.current.setLayoutProperty(layer.id, 'visibility', 'visible');
+            mapRef.current.setLayoutProperty(layer.id, 'text-field', '?');
+          } else {
+            // Show labels - restore original text field
+            mapRef.current.setLayoutProperty(layer.id, 'visibility', 'visible');
+            mapRef.current.setLayoutProperty(layer.id, 'text-field', [
+              'coalesce',
+              ['get', 'name_en'],
+              ['get', 'NAME_EN'],
+              ['get', 'name_english'],
+              ['get', 'NAME_english'],
+              ['get', 'name'],
+              ['get', 'NAME'],
+              ['get', 'country'],
+              ['get', 'COUNTRY'],
+              ['get', 'admin'],
+              ['get', 'ADMIN']
+            ]);
+          }
         }
       }
     });
@@ -164,14 +177,30 @@ export default function Home() {
       <button onClick={toggleLabels} style={{ position: 'absolute', top: '10px', left: '10px', zIndex: 1 }}>
         {labelsVisible ? 'Hide Labels' : 'Show Labels'}
       </button>
-      
+      <input 
+        type="text"
+        placeholder="Search countries..."
+        value={searchInput}
+        onChange={handleSearchChange}
+        onKeyDown={handleSearchSubmit}
+        style={{
+          position: 'absolute',
+          top: '10px',
+          left: '220px',
+          zIndex: 1,
+          padding: '8px 12px',
+          border: '1px solid #ccc',
+          borderRadius: '4px',
+          fontSize: '14px',
+          width: '200px'
+        }}
+      />
       <Map
         initialViewState={{
           zoom: 1.5
         }}
         mapStyle="https://tiles.openfreemap.org/styles/liberty"
         onLoad={handleMapLoad}
-        onZoom={handleZoom}
         minZoom={1.5}
         maxZoom={5}
         // Disable 3D view and rotation
