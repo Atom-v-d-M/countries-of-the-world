@@ -1,0 +1,718 @@
+[
+  {
+    "primaryName": "United States",
+    "alternativeNames": ["USA", "US", "America", "United States of America", "U.S.A.", "U.S."]
+  },
+  {
+    "primaryName": "Canada",
+    "alternativeNames": ["CA", "CAN"]
+  },
+  {
+    "primaryName": "Mexico",
+    "alternativeNames": ["MX", "MEX", "México", "United Mexican States"]
+  },
+  {
+    "primaryName": "Guatemala",
+    "alternativeNames": ["GT", "GTM", "Republic of Guatemala"]
+  },
+  {
+    "primaryName": "Belize",
+    "alternativeNames": ["BZ", "BLZ", "British Honduras"]
+  },
+  {
+    "primaryName": "El Salvador",
+    "alternativeNames": ["SV", "SLV", "Republic of El Salvador"]
+  },
+  {
+    "primaryName": "Honduras",
+    "alternativeNames": ["HN", "HND", "Republic of Honduras"]
+  },
+  {
+    "primaryName": "Nicaragua",
+    "alternativeNames": ["NI", "NIC", "Republic of Nicaragua"]
+  },
+  {
+    "primaryName": "Costa Rica",
+    "alternativeNames": ["CR", "CRI", "Republic of Costa Rica"]
+  },
+  {
+    "primaryName": "Panama",
+    "alternativeNames": ["PA", "PAN", "Republic of Panama"]
+  },
+  {
+    "primaryName": "Brazil",
+    "alternativeNames": ["BR", "BRA", "Brasil", "Federative Republic of Brazil"]
+  },
+  {
+    "primaryName": "Argentina",
+    "alternativeNames": ["AR", "ARG", "Argentine Republic"]
+  },
+  {
+    "primaryName": "Chile",
+    "alternativeNames": ["CL", "CHL", "Republic of Chile"]
+  },
+  {
+    "primaryName": "Peru",
+    "alternativeNames": ["PE", "PER", "Perú", "Republic of Peru"]
+  },
+  {
+    "primaryName": "Colombia",
+    "alternativeNames": ["CO", "COL", "Republic of Colombia"]
+  },
+  {
+    "primaryName": "Venezuela",
+    "alternativeNames": ["VE", "VEN", "Bolivarian Republic of Venezuela"]
+  },
+  {
+    "primaryName": "Ecuador",
+    "alternativeNames": ["EC", "ECU", "Republic of Ecuador"]
+  },
+  {
+    "primaryName": "Bolivia",
+    "alternativeNames": ["BO", "BOL", "Plurinational State of Bolivia"]
+  },
+  {
+    "primaryName": "Paraguay",
+    "alternativeNames": ["PY", "PRY", "Republic of Paraguay"]
+  },
+  {
+    "primaryName": "Uruguay",
+    "alternativeNames": ["UY", "URY", "Oriental Republic of Uruguay"]
+  },
+  {
+    "primaryName": "Guyana",
+    "alternativeNames": ["GY", "GUY", "Co-operative Republic of Guyana"]
+  },
+  {
+    "primaryName": "Suriname",
+    "alternativeNames": ["SR", "SUR", "Republic of Suriname"]
+  },
+  {
+    "primaryName": "United Kingdom",
+    "alternativeNames": ["UK", "GB", "GBR", "Britain", "Great Britain", "England", "Scotland", "Wales", "Northern Ireland"]
+  },
+  {
+    "primaryName": "France",
+    "alternativeNames": ["FR", "FRA", "French Republic", "République française"]
+  },
+  {
+    "primaryName": "Germany",
+    "alternativeNames": ["DE", "DEU", "Deutschland", "Federal Republic of Germany", "BRD"]
+  },
+  {
+    "primaryName": "Italy",
+    "alternativeNames": ["IT", "ITA", "Italia", "Italian Republic"]
+  },
+  {
+    "primaryName": "Spain",
+    "alternativeNames": ["ES", "ESP", "España", "Kingdom of Spain"]
+  },
+  {
+    "primaryName": "Portugal",
+    "alternativeNames": ["PT", "PRT", "Portuguese Republic"]
+  },
+  {
+    "primaryName": "Netherlands",
+    "alternativeNames": ["NL", "NLD", "Holland", "Kingdom of the Netherlands"]
+  },
+  {
+    "primaryName": "Belgium",
+    "alternativeNames": ["BE", "BEL", "België", "Belgique", "Kingdom of Belgium"]
+  },
+  {
+    "primaryName": "Luxembourg",
+    "alternativeNames": ["LU", "LUX", "Luxemburg", "Grand Duchy of Luxembourg"]
+  },
+  {
+    "primaryName": "Switzerland",
+    "alternativeNames": ["CH", "CHE", "Schweiz", "Suisse", "Svizzera", "Swiss Confederation"]
+  },
+  {
+    "primaryName": "Austria",
+    "alternativeNames": ["AT", "AUT", "Österreich", "Republic of Austria"]
+  },
+  {
+    "primaryName": "Czech Republic",
+    "alternativeNames": ["CZ", "CZE", "Czechia", "Česká republika"]
+  },
+  {
+    "primaryName": "Slovakia",
+    "alternativeNames": ["SK", "SVK", "Slovak Republic", "Slovensko"]
+  },
+  {
+    "primaryName": "Poland",
+    "alternativeNames": ["PL", "POL", "Polska", "Republic of Poland"]
+  },
+  {
+    "primaryName": "Hungary",
+    "alternativeNames": ["HU", "HUN", "Magyarország", "Republic of Hungary"]
+  },
+  {
+    "primaryName": "Slovenia",
+    "alternativeNames": ["SI", "SVN", "Slovenija", "Republic of Slovenia"]
+  },
+  {
+    "primaryName": "Croatia",
+    "alternativeNames": ["HR", "HRV", "Hrvatska", "Republic of Croatia"]
+  },
+  {
+    "primaryName": "Bosnia and Herzegovina",
+    "alternativeNames": ["BA", "BIH", "Bosnia", "Bosna i Hercegovina"]
+  },
+  {
+    "primaryName": "Serbia",
+    "alternativeNames": ["RS", "SRB", "Srbija", "Republic of Serbia"]
+  },
+  {
+    "primaryName": "Montenegro",
+    "alternativeNames": ["ME", "MNE", "Crna Gora", "Republic of Montenegro"]
+  },
+  {
+    "primaryName": "Albania",
+    "alternativeNames": ["AL", "ALB", "Shqipëria", "Republic of Albania"]
+  },
+  {
+    "primaryName": "North Macedonia",
+    "alternativeNames": ["MK", "MKD", "Macedonia", "Republic of North Macedonia"]
+  },
+  {
+    "primaryName": "Bulgaria",
+    "alternativeNames": ["BG", "BGR", "България", "Republic of Bulgaria"]
+  },
+  {
+    "primaryName": "Romania",
+    "alternativeNames": ["RO", "ROU", "România"]
+  },
+  {
+    "primaryName": "Moldova",
+    "alternativeNames": ["MD", "MDA", "Republic of Moldova", "Moldova, Republic of"]
+  },
+  {
+    "primaryName": "Ukraine",
+    "alternativeNames": ["UA", "UKR", "Україна"]
+  },
+  {
+    "primaryName": "Belarus",
+    "alternativeNames": ["BY", "BLR", "Беларусь", "Republic of Belarus"]
+  },
+  {
+    "primaryName": "Lithuania",
+    "alternativeNames": ["LT", "LTU", "Lietuva", "Republic of Lithuania"]
+  },
+  {
+    "primaryName": "Latvia",
+    "alternativeNames": ["LV", "LVA", "Latvija", "Republic of Latvia"]
+  },
+  {
+    "primaryName": "Estonia",
+    "alternativeNames": ["EE", "EST", "Eesti", "Republic of Estonia"]
+  },
+  {
+    "primaryName": "Finland",
+    "alternativeNames": ["FI", "FIN", "Suomi", "Republic of Finland"]
+  },
+  {
+    "primaryName": "Sweden",
+    "alternativeNames": ["SE", "SWE", "Sverige", "Kingdom of Sweden"]
+  },
+  {
+    "primaryName": "Norway",
+    "alternativeNames": ["NO", "NOR", "Norge", "Kingdom of Norway"]
+  },
+  {
+    "primaryName": "Denmark",
+    "alternativeNames": ["DK", "DNK", "Danmark", "Kingdom of Denmark"]
+  },
+  {
+    "primaryName": "Iceland",
+    "alternativeNames": ["IS", "ISL", "Ísland", "Republic of Iceland"]
+  },
+  {
+    "primaryName": "Ireland",
+    "alternativeNames": ["IE", "IRL", "Éire", "Republic of Ireland"]
+  },
+  {
+    "primaryName": "Malta",
+    "alternativeNames": ["MT", "MLT", "Republic of Malta"]
+  },
+  {
+    "primaryName": "Cyprus",
+    "alternativeNames": ["CY", "CYP", "Κύπρος", "Kıbrıs", "Republic of Cyprus"]
+  },
+  {
+    "primaryName": "Greece",
+    "alternativeNames": ["GR", "GRC", "Ελλάδα", "Hellenic Republic"]
+  },
+  {
+    "primaryName": "Turkey",
+    "alternativeNames": ["TR", "TUR", "Türkiye", "Republic of Turkey"]
+  },
+  {
+    "primaryName": "Russia",
+    "alternativeNames": ["RU", "RUS", "Россия", "Russian Federation"]
+  },
+  {
+    "primaryName": "China",
+    "alternativeNames": ["CN", "CHN", "中国", "People's Republic of China", "PRC"]
+  },
+  {
+    "primaryName": "Japan",
+    "alternativeNames": ["JP", "JPN", "日本", "Nippon", "Nihon"]
+  },
+  {
+    "primaryName": "South Korea",
+    "alternativeNames": ["KR", "KOR", "Korea", "Republic of Korea", "ROK", "대한민국"]
+  },
+  {
+    "primaryName": "North Korea",
+    "alternativeNames": ["KP", "PRK", "Democratic People's Republic of Korea", "DPRK", "조선민주주의인민공화국"]
+  },
+  {
+    "primaryName": "Mongolia",
+    "alternativeNames": ["MN", "MNG", "Монгол", "Mongolian People's Republic"]
+  },
+  {
+    "primaryName": "Kazakhstan",
+    "alternativeNames": ["KZ", "KAZ", "Қазақстан", "Republic of Kazakhstan"]
+  },
+  {
+    "primaryName": "Uzbekistan",
+    "alternativeNames": ["UZ", "UZB", "Oʻzbekiston", "Republic of Uzbekistan"]
+  },
+  {
+    "primaryName": "Turkmenistan",
+    "alternativeNames": ["TM", "TKM", "Türkmenistan"]
+  },
+  {
+    "primaryName": "Tajikistan",
+    "alternativeNames": ["TJ", "TJK", "Тоҷикистон", "Republic of Tajikistan"]
+  },
+  {
+    "primaryName": "Kyrgyzstan",
+    "alternativeNames": ["KG", "KGZ", "Кыргызстан", "Kyrgyz Republic"]
+  },
+  {
+    "primaryName": "Afghanistan",
+    "alternativeNames": ["AF", "AFG", "افغانستان", "Islamic Emirate of Afghanistan"]
+  },
+  {
+    "primaryName": "Pakistan",
+    "alternativeNames": ["PK", "PAK", "پاکستان", "Islamic Republic of Pakistan"]
+  },
+  {
+    "primaryName": "India",
+    "alternativeNames": ["IN", "IND", "भारत", "Republic of India"]
+  },
+  {
+    "primaryName": "Nepal",
+    "alternativeNames": ["NP", "NPL", "नेपाल", "Federal Democratic Republic of Nepal"]
+  },
+  {
+    "primaryName": "Bhutan",
+    "alternativeNames": ["BT", "BTN", "འབྲུག་ཡུལ", "Kingdom of Bhutan"]
+  },
+  {
+    "primaryName": "Bangladesh",
+    "alternativeNames": ["BD", "BGD", "বাংলাদেশ", "People's Republic of Bangladesh"]
+  },
+  {
+    "primaryName": "Sri Lanka",
+    "alternativeNames": ["LK", "LKA", "ශ්‍රී ලංකා", "Democratic Socialist Republic of Sri Lanka"]
+  },
+  {
+    "primaryName": "Maldives",
+    "alternativeNames": ["MV", "MDV", "ދިވެހި", "Republic of Maldives"]
+  },
+  {
+    "primaryName": "Myanmar",
+    "alternativeNames": ["MM", "MMR", "Burma", "Republic of the Union of Myanmar"]
+  },
+  {
+    "primaryName": "Thailand",
+    "alternativeNames": ["TH", "THA", "ประเทศไทย", "Kingdom of Thailand"]
+  },
+  {
+    "primaryName": "Laos",
+    "alternativeNames": ["LA", "LAO", "ລາວ", "Lao People's Democratic Republic"]
+  },
+  {
+    "primaryName": "Cambodia",
+    "alternativeNames": ["KH", "KHM", "កម្ពុជា", "Kingdom of Cambodia"]
+  },
+  {
+    "primaryName": "Vietnam",
+    "alternativeNames": ["VN", "VNM", "Việt Nam", "Socialist Republic of Vietnam"]
+  },
+  {
+    "primaryName": "Malaysia",
+    "alternativeNames": ["MY", "MYS", "Malaysia"]
+  },
+  {
+    "primaryName": "Singapore",
+    "alternativeNames": ["SG", "SGP", "Republic of Singapore"]
+  },
+  {
+    "primaryName": "Indonesia",
+    "alternativeNames": ["ID", "IDN", "Republic of Indonesia"]
+  },
+  {
+    "primaryName": "Philippines",
+    "alternativeNames": ["PH", "PHL", "Pilipinas", "Republic of the Philippines"]
+  },
+  {
+    "primaryName": "Brunei",
+    "alternativeNames": ["BN", "BRN", "Brunei Darussalam"]
+  },
+  {
+    "primaryName": "East Timor",
+    "alternativeNames": ["TL", "TLS", "Timor-Leste", "Democratic Republic of Timor-Leste"]
+  },
+  {
+    "primaryName": "Taiwan",
+    "alternativeNames": ["TW", "TWN", "Republic of China", "ROC", "中華民國"]
+  },
+  {
+    "primaryName": "Hong Kong",
+    "alternativeNames": ["HK", "HKG", "香港", "Hong Kong Special Administrative Region"]
+  },
+  {
+    "primaryName": "Macau",
+    "alternativeNames": ["MO", "MAC", "澳門", "Macao Special Administrative Region"]
+  },
+  {
+    "primaryName": "Saudi Arabia",
+    "alternativeNames": ["SA", "SAU", "المملكة العربية السعودية", "Kingdom of Saudi Arabia"]
+  },
+  {
+    "primaryName": "United Arab Emirates",
+    "alternativeNames": ["AE", "ARE", "UAE", "الإمارات العربية المتحدة"]
+  },
+  {
+    "primaryName": "Qatar",
+    "alternativeNames": ["QA", "QAT", "قطر", "State of Qatar"]
+  },
+  {
+    "primaryName": "Bahrain",
+    "alternativeNames": ["BH", "BHR", "البحرين", "Kingdom of Bahrain"]
+  },
+  {
+    "primaryName": "Kuwait",
+    "alternativeNames": ["KW", "KWT", "الكويت", "State of Kuwait"]
+  },
+  {
+    "primaryName": "Oman",
+    "alternativeNames": ["OM", "OMN", "عُمان", "Sultanate of Oman"]
+  },
+  {
+    "primaryName": "Yemen",
+    "alternativeNames": ["YE", "YEM", "اليمن", "Republic of Yemen"]
+  },
+  {
+    "primaryName": "Iraq",
+    "alternativeNames": ["IQ", "IRQ", "العراق", "Republic of Iraq"]
+  },
+  {
+    "primaryName": "Iran",
+    "alternativeNames": ["IR", "IRN", "ایران", "Islamic Republic of Iran"]
+  },
+  {
+    "primaryName": "Israel",
+    "alternativeNames": ["IL", "ISR", "יִשְׂרָאֵל", "State of Israel"]
+  },
+  {
+    "primaryName": "Palestine",
+    "alternativeNames": ["PS", "PSE", "فلسطين", "State of Palestine"]
+  },
+  {
+    "primaryName": "Jordan",
+    "alternativeNames": ["JO", "JOR", "الأردن", "Hashemite Kingdom of Jordan"]
+  },
+  {
+    "primaryName": "Lebanon",
+    "alternativeNames": ["LB", "LBN", "لبنان", "Lebanese Republic"]
+  },
+  {
+    "primaryName": "Syria",
+    "alternativeNames": ["SY", "SYR", "سوريا", "Syrian Arab Republic"]
+  },
+  {
+    "primaryName": "Egypt",
+    "alternativeNames": ["EG", "EGY", "مصر", "Arab Republic of Egypt"]
+  },
+  {
+    "primaryName": "Libya",
+    "alternativeNames": ["LY", "LBY", "ليبيا", "State of Libya"]
+  },
+  {
+    "primaryName": "Tunisia",
+    "alternativeNames": ["TN", "TUN", "تونس", "Republic of Tunisia"]
+  },
+  {
+    "primaryName": "Algeria",
+    "alternativeNames": ["DZ", "DZA", "الجزائر", "People's Democratic Republic of Algeria"]
+  },
+  {
+    "primaryName": "Morocco",
+    "alternativeNames": ["MA", "MAR", "المغرب", "Kingdom of Morocco"]
+  },
+  {
+    "primaryName": "Sudan",
+    "alternativeNames": ["SD", "SDN", "السودان", "Republic of the Sudan"]
+  },
+  {
+    "primaryName": "South Sudan",
+    "alternativeNames": ["SS", "SSD", "جنوب السودان", "Republic of South Sudan"]
+  },
+  {
+    "primaryName": "Ethiopia",
+    "alternativeNames": ["ET", "ETH", "ኢትዮጵያ", "Federal Democratic Republic of Ethiopia"]
+  },
+  {
+    "primaryName": "Eritrea",
+    "alternativeNames": ["ER", "ERI", "ኤርትራ", "State of Eritrea"]
+  },
+  {
+    "primaryName": "Djibouti",
+    "alternativeNames": ["DJ", "DJI", "جيبوتي", "Republic of Djibouti"]
+  },
+  {
+    "primaryName": "Somalia",
+    "alternativeNames": ["SO", "SOM", "Soomaaliya", "Federal Republic of Somalia"]
+  },
+  {
+    "primaryName": "Kenya",
+    "alternativeNames": ["KE", "KEN", "Republic of Kenya"]
+  },
+  {
+    "primaryName": "Uganda",
+    "alternativeNames": ["UG", "UGA", "Republic of Uganda"]
+  },
+  {
+    "primaryName": "Tanzania",
+    "alternativeNames": ["TZ", "TZA", "United Republic of Tanzania"]
+  },
+  {
+    "primaryName": "Rwanda",
+    "alternativeNames": ["RW", "RWA", "Republic of Rwanda"]
+  },
+  {
+    "primaryName": "Burundi",
+    "alternativeNames": ["BI", "BDI", "Republic of Burundi"]
+  },
+  {
+    "primaryName": "Democratic Republic of the Congo",
+    "alternativeNames": ["CD", "COD", "DRC", "Congo-Kinshasa", "République démocratique du Congo"]
+  },
+  {
+    "primaryName": "Republic of the Congo",
+    "alternativeNames": ["CG", "COG", "Congo", "Congo-Brazzaville", "République du Congo"]
+  },
+  {
+    "primaryName": "Central African Republic",
+    "alternativeNames": ["CF", "CAF", "CAR", "République centrafricaine"]
+  },
+  {
+    "primaryName": "Chad",
+    "alternativeNames": ["TD", "TCD", "Tchad", "Republic of Chad"]
+  },
+  {
+    "primaryName": "Cameroon",
+    "alternativeNames": ["CM", "CMR", "Republic of Cameroon"]
+  },
+  {
+    "primaryName": "Nigeria",
+    "alternativeNames": ["NG", "NGA", "Federal Republic of Nigeria"]
+  },
+  {
+    "primaryName": "Niger",
+    "alternativeNames": ["NE", "NER", "Republic of Niger"]
+  },
+  {
+    "primaryName": "Mali",
+    "alternativeNames": ["ML", "MLI", "Republic of Mali"]
+  },
+  {
+    "primaryName": "Burkina Faso",
+    "alternativeNames": ["BF", "BFA", "Upper Volta"]
+  },
+  {
+    "primaryName": "Ghana",
+    "alternativeNames": ["GH", "GHA", "Republic of Ghana"]
+  },
+  {
+    "primaryName": "Togo",
+    "alternativeNames": ["TG", "TGO", "Togolese Republic"]
+  },
+  {
+    "primaryName": "Benin",
+    "alternativeNames": ["BJ", "BEN", "Republic of Benin"]
+  },
+  {
+    "primaryName": "Côte d'Ivoire",
+    "alternativeNames": ["CI", "CIV", "Ivory Coast", "Republic of Côte d'Ivoire"]
+  },
+  {
+    "primaryName": "Liberia",
+    "alternativeNames": ["LR", "LBR", "Republic of Liberia"]
+  },
+  {
+    "primaryName": "Sierra Leone",
+    "alternativeNames": ["SL", "SLE", "Republic of Sierra Leone"]
+  },
+  {
+    "primaryName": "Guinea",
+    "alternativeNames": ["GN", "GIN", "Republic of Guinea"]
+  },
+  {
+    "primaryName": "Guinea-Bissau",
+    "alternativeNames": ["GW", "GNB", "Republic of Guinea-Bissau"]
+  },
+  {
+    "primaryName": "Senegal",
+    "alternativeNames": ["SN", "SEN", "Republic of Senegal"]
+  },
+  {
+    "primaryName": "Gambia",
+    "alternativeNames": ["GM", "GMB", "Republic of The Gambia"]
+  },
+  {
+    "primaryName": "Mauritania",
+    "alternativeNames": ["MR", "MRT", "Islamic Republic of Mauritania"]
+  },
+  {
+    "primaryName": "Cape Verde",
+    "alternativeNames": ["CV", "CPV", "Cabo Verde", "Republic of Cabo Verde"]
+  },
+  {
+    "primaryName": "São Tomé and Príncipe",
+    "alternativeNames": ["ST", "STP", "Sao Tome and Principe", "Democratic Republic of São Tomé and Príncipe"]
+  },
+  {
+    "primaryName": "Equatorial Guinea",
+    "alternativeNames": ["GQ", "GNQ", "Republic of Equatorial Guinea"]
+  },
+  {
+    "primaryName": "Gabon",
+    "alternativeNames": ["GA", "GAB", "Gabonese Republic"]
+  },
+  {
+    "primaryName": "Angola",
+    "alternativeNames": ["AO", "AGO", "Republic of Angola"]
+  },
+  {
+    "primaryName": "Zambia",
+    "alternativeNames": ["ZM", "ZMB", "Republic of Zambia"]
+  },
+  {
+    "primaryName": "Malawi",
+    "alternativeNames": ["MW", "MWI", "Republic of Malawi"]
+  },
+  {
+    "primaryName": "Mozambique",
+    "alternativeNames": ["MZ", "MOZ", "Republic of Mozambique"]
+  },
+  {
+    "primaryName": "Madagascar",
+    "alternativeNames": ["MG", "MDG", "Republic of Madagascar"]
+  },
+  {
+    "primaryName": "Mauritius",
+    "alternativeNames": ["MU", "MUS", "Republic of Mauritius"]
+  },
+  {
+    "primaryName": "Seychelles",
+    "alternativeNames": ["SC", "SYC", "Republic of Seychelles"]
+  },
+  {
+    "primaryName": "Comoros",
+    "alternativeNames": ["KM", "COM", "Union of the Comoros"]
+  },
+  {
+    "primaryName": "South Africa",
+    "alternativeNames": ["ZA", "ZAF", "Republic of South Africa"]
+  },
+  {
+    "primaryName": "Lesotho",
+    "alternativeNames": ["LS", "LSO", "Kingdom of Lesotho"]
+  },
+  {
+    "primaryName": "Swaziland",
+    "alternativeNames": ["SZ", "SWZ", "Eswatini", "Kingdom of Eswatini"]
+  },
+  {
+    "primaryName": "Botswana",
+    "alternativeNames": ["BW", "BWA", "Republic of Botswana"]
+  },
+  {
+    "primaryName": "Namibia",
+    "alternativeNames": ["NA", "NAM", "Republic of Namibia"]
+  },
+  {
+    "primaryName": "Zimbabwe",
+    "alternativeNames": ["ZW", "ZWE", "Republic of Zimbabwe"]
+  },
+  {
+    "primaryName": "Australia",
+    "alternativeNames": ["AU", "AUS", "Commonwealth of Australia"]
+  },
+  {
+    "primaryName": "New Zealand",
+    "alternativeNames": ["NZ", "NZL", "Aotearoa"]
+  },
+  {
+    "primaryName": "Papua New Guinea",
+    "alternativeNames": ["PG", "PNG", "Independent State of Papua New Guinea"]
+  },
+  {
+    "primaryName": "Fiji",
+    "alternativeNames": ["FJ", "FJI", "Republic of Fiji"]
+  },
+  {
+    "primaryName": "Solomon Islands",
+    "alternativeNames": ["SB", "SLB"]
+  },
+  {
+    "primaryName": "Vanuatu",
+    "alternativeNames": ["VU", "VUT", "Republic of Vanuatu"]
+  },
+  {
+    "primaryName": "Samoa",
+    "alternativeNames": ["WS", "WSM", "Independent State of Samoa"]
+  },
+  {
+    "primaryName": "Tonga",
+    "alternativeNames": ["TO", "TON", "Kingdom of Tonga"]
+  },
+  {
+    "primaryName": "Kiribati",
+    "alternativeNames": ["KI", "KIR", "Republic of Kiribati"]
+  },
+  {
+    "primaryName": "Tuvalu",
+    "alternativeNames": ["TV", "TUV"]
+  },
+  {
+    "primaryName": "Nauru",
+    "alternativeNames": ["NR", "NRU", "Republic of Nauru"]
+  },
+  {
+    "primaryName": "Palau",
+    "alternativeNames": ["PW", "PLW", "Republic of Palau"]
+  },
+  {
+    "primaryName": "Marshall Islands",
+    "alternativeNames": ["MH", "MHL", "Republic of the Marshall Islands"]
+  },
+  {
+    "primaryName": "Micronesia",
+    "alternativeNames": ["FM", "FSM", "Federated States of Micronesia"]
+  },
+  {
+    "primaryName": "Cook Islands",
+    "alternativeNames": ["CK", "COK"]
+  },
+  {
+    "primaryName": "Niue",
+    "alternativeNames": ["NU", "NIU"]
+  }
+]
