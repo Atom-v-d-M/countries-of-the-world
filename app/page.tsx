@@ -2,7 +2,7 @@
 
 import styles from "./page.module.scss";
 import { Map } from "@vis.gl/react-maplibre";
-import { useRef, useState } from "react";
+import { useRef, useState, useEffect } from "react";
 import countryData from "./countryData.json";
 
 // Create allowedCountries array from JSON data
@@ -13,8 +13,88 @@ export default function Home() {
   const mapRef = useRef<any>(null);
 
   const [foundCountries, setFoundCountries] = useState<string[]>([])
-  const [labelsVisible, setLabelsVisible] = useState(true);
+  const [labelsVisible, setLabelsVisible] = useState(false);
   const [searchInput, setSearchInput] = useState<string>('');
+
+  // Update map filter when foundCountries or labelsVisible changes
+  useEffect(() => {
+    if (!mapRef.current) return;
+    
+    mapRef.current.getStyle().layers.forEach((layer: any) => {
+      if (layer.type === 'symbol' && isCountryLabel(layer)) {
+        try {
+          if (labelsVisible) {
+            // When labelsVisible is true, show all countries (override any filters)
+            const filter = [
+              'any',
+              ['in', ['get', 'name_en'], ['literal', allowedCountries]],
+              ['in', ['get', 'NAME_EN'], ['literal', allowedCountries]],
+              ['in', ['get', 'name_english'], ['literal', allowedCountries]],
+              ['in', ['get', 'NAME_english'], ['literal', allowedCountries]],
+              ['in', ['get', 'name'], ['literal', allowedCountries]],
+              ['in', ['get', 'NAME'], ['literal', allowedCountries]],
+              ['in', ['get', 'country'], ['literal', allowedCountries]],
+              ['in', ['get', 'COUNTRY'], ['literal', allowedCountries]],
+              ['in', ['get', 'admin'], ['literal', allowedCountries]],
+              ['in', ['get', 'ADMIN'], ['literal', allowedCountries]]
+            ];
+            mapRef.current.setFilter(layer.id, filter);
+          } else {
+            // When labelsVisible is false, show all countries but with conditional text
+            const filter = [
+              'any',
+              ['in', ['get', 'name_en'], ['literal', allowedCountries]],
+              ['in', ['get', 'NAME_EN'], ['literal', allowedCountries]],
+              ['in', ['get', 'name_english'], ['literal', allowedCountries]],
+              ['in', ['get', 'NAME_english'], ['literal', allowedCountries]],
+              ['in', ['get', 'name'], ['literal', allowedCountries]],
+              ['in', ['get', 'NAME'], ['literal', allowedCountries]],
+              ['in', ['get', 'country'], ['literal', allowedCountries]],
+              ['in', ['get', 'COUNTRY'], ['literal', allowedCountries]],
+              ['in', ['get', 'admin'], ['literal', allowedCountries]],
+              ['in', ['get', 'ADMIN'], ['literal', allowedCountries]]
+            ];
+            mapRef.current.setFilter(layer.id, filter);
+            
+            // Set conditional text field: show name if found, question mark if not
+            mapRef.current.setLayoutProperty(layer.id, 'text-field', [
+              'case',
+              // Check if country is in foundCountries (check all possible name properties)
+              ['any',
+                ['in', ['get', 'name'], ['literal', foundCountries]],
+                ['in', ['get', 'name_en'], ['literal', foundCountries]],
+                ['in', ['get', 'NAME_EN'], ['literal', foundCountries]],
+                ['in', ['get', 'name_english'], ['literal', foundCountries]],
+                ['in', ['get', 'NAME_english'], ['literal', foundCountries]],
+                ['in', ['get', 'country'], ['literal', foundCountries]],
+                ['in', ['get', 'COUNTRY'], ['literal', foundCountries]],
+                ['in', ['get', 'admin'], ['literal', foundCountries]],
+                ['in', ['get', 'ADMIN'], ['literal', foundCountries]]
+              ],
+              // If found, show the actual name
+              [
+                'coalesce',
+                ['get', 'name_en'],
+                ['get', 'NAME_EN'],
+                ['get', 'name_english'],
+                ['get', 'NAME_english'],
+                ['get', 'name'],
+                ['get', 'NAME'],
+                ['get', 'country'],
+                ['get', 'COUNTRY'],
+                ['get', 'admin'],
+                ['get', 'ADMIN']
+              ],
+              // If not found, show question mark
+              '?'
+            ]);
+          }
+        } catch (error) {
+          console.log(`Could not apply filter to ${layer.id}:`, error);
+        }
+      }
+    });
+  }, [foundCountries, labelsVisible]);
 
   // Handle search input change
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,7 +120,9 @@ export default function Home() {
       });
 
       if (matchingCountries.length > 0) {
-        console.log('Found matching countries:', matchingCountries.map(c => c.primaryName));
+        const foundCountry = matchingCountries[0]; // Should only be one match
+        console.log('Found country:', foundCountry.primaryName);
+        setFoundCountries((prev) => [...prev, foundCountry.primaryName]);
       } else {
         console.log('No countries found matching:', searchTerm);
       }
@@ -108,25 +190,74 @@ export default function Home() {
             // console.log(`Could not set text field for ${layer.id}:`, error);
           }
           
-          // Apply filter to only show specific countries
+          // Apply filter based on labelsVisible state
           try {
-            // Create a filter that prioritizes English name properties
-            const filter = [
-              'any',
-              // Prioritize English name properties first
-              ['in', ['get', 'name_en'], ['literal', allowedCountries]],
-              ['in', ['get', 'NAME_EN'], ['literal', allowedCountries]],
-              ['in', ['get', 'name_english'], ['literal', allowedCountries]],
-              ['in', ['get', 'NAME_english'], ['literal', allowedCountries]],
-              // Fallback to other properties only if English names don't match
-              ['in', ['get', 'name'], ['literal', allowedCountries]],
-              ['in', ['get', 'NAME'], ['literal', allowedCountries]],
-              ['in', ['get', 'country'], ['literal', allowedCountries]],
-              ['in', ['get', 'COUNTRY'], ['literal', allowedCountries]],
-              ['in', ['get', 'admin'], ['literal', allowedCountries]],
-              ['in', ['get', 'ADMIN'], ['literal', allowedCountries]]
-            ];
-            map.setFilter(layer.id, filter);
+            if (labelsVisible) {
+              // When labelsVisible is true, show all countries
+              const filter = [
+                'any',
+                ['in', ['get', 'name_en'], ['literal', allowedCountries]],
+                ['in', ['get', 'NAME_EN'], ['literal', allowedCountries]],
+                ['in', ['get', 'name_english'], ['literal', allowedCountries]],
+                ['in', ['get', 'NAME_english'], ['literal', allowedCountries]],
+                ['in', ['get', 'name'], ['literal', allowedCountries]],
+                ['in', ['get', 'NAME'], ['literal', allowedCountries]],
+                ['in', ['get', 'country'], ['literal', allowedCountries]],
+                ['in', ['get', 'COUNTRY'], ['literal', allowedCountries]],
+                ['in', ['get', 'admin'], ['literal', allowedCountries]],
+                ['in', ['get', 'ADMIN'], ['literal', allowedCountries]]
+              ];
+              map.setFilter(layer.id, filter);
+            } else {
+              // When labelsVisible is false, show all countries but with conditional text
+              const filter = [
+                'any',
+                ['in', ['get', 'name_en'], ['literal', allowedCountries]],
+                ['in', ['get', 'NAME_EN'], ['literal', allowedCountries]],
+                ['in', ['get', 'name_english'], ['literal', allowedCountries]],
+                ['in', ['get', 'NAME_english'], ['literal', allowedCountries]],
+                ['in', ['get', 'name'], ['literal', allowedCountries]],
+                ['in', ['get', 'NAME'], ['literal', allowedCountries]],
+                ['in', ['get', 'country'], ['literal', allowedCountries]],
+                ['in', ['get', 'COUNTRY'], ['literal', allowedCountries]],
+                ['in', ['get', 'admin'], ['literal', allowedCountries]],
+                ['in', ['get', 'ADMIN'], ['literal', allowedCountries]]
+              ];
+              map.setFilter(layer.id, filter);
+              
+              // Set conditional text field: show name if found, question mark if not
+              map.setLayoutProperty(layer.id, 'text-field', [
+                'case',
+                // Check if country is in foundCountries (check all possible name properties)
+                ['any',
+                  ['in', ['get', 'name'], ['literal', foundCountries]],
+                  ['in', ['get', 'name_en'], ['literal', foundCountries]],
+                  ['in', ['get', 'NAME_EN'], ['literal', foundCountries]],
+                  ['in', ['get', 'name_english'], ['literal', foundCountries]],
+                  ['in', ['get', 'NAME_english'], ['literal', foundCountries]],
+                  ['in', ['get', 'country'], ['literal', foundCountries]],
+                  ['in', ['get', 'COUNTRY'], ['literal', foundCountries]],
+                  ['in', ['get', 'admin'], ['literal', foundCountries]],
+                  ['in', ['get', 'ADMIN'], ['literal', foundCountries]]
+                ],
+                // If found, show the actual name
+                [
+                  'coalesce',
+                  ['get', 'name_en'],
+                  ['get', 'NAME_EN'],
+                  ['get', 'name_english'],
+                  ['get', 'NAME_english'],
+                  ['get', 'name'],
+                  ['get', 'NAME'],
+                  ['get', 'country'],
+                  ['get', 'COUNTRY'],
+                  ['get', 'admin'],
+                  ['get', 'ADMIN']
+                ],
+                // If not found, show question mark
+                '?'
+              ]);
+            }
             // console.log(`Applied multi-property country filter to: ${layer.id}`);
           } catch (error) {
             // console.log(`Could not apply filter to ${layer.id}:`, error);
@@ -146,12 +277,8 @@ export default function Home() {
       if (layer.type === 'symbol') {
         // Only toggle country labels
         if (isCountryLabel(layer)) {
-          if (labelsVisible) {
-            // Hide labels - show question marks
-            mapRef.current.setLayoutProperty(layer.id, 'visibility', 'visible');
-            mapRef.current.setLayoutProperty(layer.id, 'text-field', '?');
-          } else {
-            // Show labels - restore original text field
+          if (!labelsVisible) {
+            // Switching to show labels - restore original text field
             mapRef.current.setLayoutProperty(layer.id, 'visibility', 'visible');
             mapRef.current.setLayoutProperty(layer.id, 'text-field', [
               'coalesce',
@@ -166,6 +293,10 @@ export default function Home() {
               ['get', 'admin'],
               ['get', 'ADMIN']
             ]);
+          } else {
+            // Switching to hide labels - show question marks
+            mapRef.current.setLayoutProperty(layer.id, 'visibility', 'visible');
+            mapRef.current.setLayoutProperty(layer.id, 'text-field', '?');
           }
         }
       }
