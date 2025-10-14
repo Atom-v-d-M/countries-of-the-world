@@ -1,0 +1,26 @@
+.primaryHeader {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    min-height: 64px;
+    background-color: rgb(var(--color-background-rgb));
+
+    &__wrapper {
+        display: flex;
+        flex: 1;
+        max-width: 1216px;
+        align-items: center;
+    }
+
+    &__heading {
+        color: rgb(var(--color-primary-text-rgb));
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        font-weight: bold;
+    }
+
+    &__childrenWrapper {
+        display: flex;
+        flex: 1;
+    }
+}
