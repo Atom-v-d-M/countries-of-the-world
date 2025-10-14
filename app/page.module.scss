@@ -1,13 +1,26 @@
-.page {
+.home {
     display: flex;
     flex-direction: column;
     flex: 1;
     align-items: center;
     justify-content: center;
-    /* Ensure full viewport coverage */
     height: 100vh;
     min-height: 100vh;
     min-height: -webkit-fill-available;
     width: 100%;
     overflow: hidden;
+    background-color: rgb(var(--color-backdrop-rgb));
+
+    &__navMenu {
+        display: flex;
+        flex-direction: column;
+        padding: 2rem;
+        background-color: rgb(var(--color-background-rgb));
+        box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+        border-radius: 0.75rem;
+    }
+
+    &__navLink {
+        
+    }
 }
