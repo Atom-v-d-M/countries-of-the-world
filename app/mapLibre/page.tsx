@@ -4,6 +4,7 @@ import styles from "./page.module.scss";
 import { Map } from "@vis.gl/react-maplibre";
 import { useRef, useState, useEffect } from "react";
 import countryData from "./countryData.json";
+import PrimaryLayout from "@/layouts/primaryLayout";
 
 // Create allowedCountries array from JSON data
 const allowedCountries = countryData.map(country => country.primaryName);
@@ -304,51 +305,55 @@ export default function MapLibrePage() {
   };
 
   return (
-    <div className={styles.page}>
-      <button onClick={toggleLabels} style={{ position: 'absolute', top: '10px', left: '10px', zIndex: 1 }}>
-        {labelsVisible ? 'Hide Labels' : 'Show Labels'}
-      </button>
-      <input 
-        type="text"
-        placeholder="Search countries..."
-        value={searchInput}
-        onChange={handleSearchChange}
-        onKeyDown={handleSearchSubmit}
-        style={{
-          position: 'absolute',
-          top: '10px',
-          left: '220px',
-          zIndex: 1,
-          padding: '8px 12px',
-          border: '1px solid #ccc',
-          borderRadius: '4px',
-          fontSize: '14px',
-          width: '200px'
-        }}
-      />
-      <span style={{ position: 'absolute', top: '10px', left: '120px', zIndex: 1 }}>{`${foundCountries?.length} / ${allowedCountries?.length}`}</span>
-      <Map
-        initialViewState={{
-          zoom: 1.5
-        }}
-        mapStyle="https://tiles.openfreemap.org/styles/liberty"
-        onLoad={handleMapLoad}
-        minZoom={1.5}
-        maxZoom={5}
-        // Disable 3D view and rotation
-        pitch={0}
-        bearing={0}
-        // Disable drag rotation
-        dragRotate={false}
-        // Disable touch rotation
-        touchPitch={false}
-        // Disable keyboard rotation
-        keyboard={false}
-        // Disable double-click zoom (can cause pitch changes)
-        doubleClickZoom={false}
-        // Disable box zoom (can cause pitch changes)
-        boxZoom={false}
-      />
-    </div>
+    <PrimaryLayout>
+      <div className={styles.mapLibrePage}>
+        {/* <button onClick={toggleLabels} style={{ position: 'absolute', top: '10px', left: '10px', zIndex: 1 }}>
+          {labelsVisible ? 'Hide Labels' : 'Show Labels'}
+        </button> */}
+        {/* <input 
+          type="text"
+          placeholder="Search countries..."
+          value={searchInput}
+          onChange={handleSearchChange}
+          onKeyDown={handleSearchSubmit}
+          style={{
+            position: 'absolute',
+            top: '10px',
+            left: '220px',
+            zIndex: 1,
+            padding: '8px 12px',
+            border: '1px solid #ccc',
+            borderRadius: '4px',
+            fontSize: '14px',
+            width: '200px'
+          }}
+        />
+        <span style={{ position: 'absolute', top: '10px', left: '120px', zIndex: 1 }}>{`${foundCountries?.length} / ${allowedCountries?.length}`}</span> */}
+        <div className={styles.mapLibrePage__mapWrapper}>
+          <Map
+            initialViewState={{
+              zoom: 1.5
+            }}
+            mapStyle="https://tiles.openfreemap.org/styles/liberty"
+            onLoad={handleMapLoad}
+            minZoom={1.5}
+            maxZoom={5}
+            // Disable 3D view and rotation
+            pitch={0}
+            bearing={0}
+            // Disable drag rotation
+            dragRotate={false}
+            // Disable touch rotation
+            touchPitch={false}
+            // Disable keyboard rotation
+            keyboard={false}
+            // Disable double-click zoom (can cause pitch changes)
+            doubleClickZoom={false}
+            // Disable box zoom (can cause pitch changes)
+            boxZoom={false}
+          />
+        </div>
+      </div>
+    </PrimaryLayout>
   );
 }

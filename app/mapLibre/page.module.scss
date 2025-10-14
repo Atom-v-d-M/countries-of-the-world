@@ -1,13 +1,10 @@
-.page {
+.mapLibrePage {
     display: flex;
     flex-direction: column;
     flex: 1;
-    align-items: center;
-    justify-content: center;
-    /* Ensure full viewport coverage */
-    height: 100vh;
-    min-height: 100vh;
-    min-height: -webkit-fill-available;
-    width: 100%;
-    overflow: hidden;
+
+    &__mapWrapper {
+        display: flex;
+        flex: 1;
+    }
 }
