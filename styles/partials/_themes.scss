@@ -1,0 +1,17 @@
+:root {
+    --color-backdrop-rgb: 245, 247, 250;
+    --color-background-rgb: 255, 255, 255;
+    --color-primary-text-rgb: 17, 24, 39;
+    --color-secondary-text-rgb: 55, 65, 81;
+    --color-general-text-rgb: 100, 116, 139;
+    --color-highlight-rgb: 16, 138, 210;
+}
+  
+[data-theme='dark'] {
+    --color-backdrop-rgb: 17, 24, 39;
+    --color-background-rgb: 16, 28, 34;
+    --color-primary-text-rgb: 255, 255, 255;
+    --color-secondary-text-rgb: 209, 213, 219;
+    --color-general-text-rgb: 156, 163, 175;
+    --color-highlight-rgb: 19, 164, 236;
+}
