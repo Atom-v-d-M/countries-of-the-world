@@ -2,9 +2,61 @@
     display: flex;
     flex-direction: column;
     flex: 1;
+    position: relative;
+
+    &__content {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
 
     &__mapWrapper {
         display: flex;
         flex: 1;
+    }
+
+    &__progressWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        width: 128px;
+        margin-left: 1.5rem;
+    }
+
+    &__progressText {
+        color: rgb(var(--color-primary-text-rgb));
+        font-weight: bold;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+    }
+
+    &__searchArea {
+        position: absolute;
+        bottom: 49;
+        left: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        background-color: rgba(16, 28, 34, 0.8);
+        height: 80px;
+    }
+
+    &__searchInput {
+        display: flex;
+        width: 576px;
+        height: 48px;
+        padding: 8px 16px 8px 48px;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        background-color: rgb(var(--color-backdrop-rgb));
+        outline: none;
+        color: rgba(var(--color-primary-text-rgb), 0.7);
+
+        &::placeholder {
+            color: rgba(var(--color-general-text-rgb), 0.5);
+        }
     }
 }
