@@ -1,0 +1,40 @@
+.standardButton {
+  display: flex;
+  height: 36px;
+  justify-content: center;
+  align-items: center;
+  padding: 0 1rem;
+  gap: 0.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: rgba(19, 164, 236, 0.2);
+  color: rgb(19, 164, 236);
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color, 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(19, 164, 236, 0.4);
+  }
+
+  &--highlight {
+    background-color: rgba(19, 164, 236, 1);
+    color: white;
+
+    &:hover {
+      background-color: rgba(19, 164, 236, 0.8);
+    }
+  }
+
+  &--warning {
+    background-color: rgba(239, 68, 68, 0.1);
+    color: rgb(239, 68, 68);
+
+    &:hover {
+      background-color: rgba(239, 68, 68, 0.2);
+    }
+  }
+}
+  
+  
