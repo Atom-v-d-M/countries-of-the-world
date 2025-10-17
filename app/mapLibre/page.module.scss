@@ -15,21 +15,6 @@
         flex: 1;
     }
 
-    &__progressWrapper {
-        display: flex;
-        flex-direction: column;
-        gap: 0.25rem;
-        width: 128px;
-        margin-left: 1.5rem;
-    }
-
-    &__progressText {
-        color: rgb(var(--color-primary-text-rgb));
-        font-weight: bold;
-        font-size: 0.875rem;
-        line-height: 1.25rem;
-    }
-
     &__searchArea {
         position: absolute;
         bottom: 49;
@@ -59,4 +44,31 @@
             color: rgba(var(--color-general-text-rgb), 0.5);
         }
     }
+}
+
+.header {
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+
+    &__progressWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+        width: 128px;
+        margin-left: 1.5rem;
+    }
+
+    &__progressText {
+        color: rgb(var(--color-primary-text-rgb));
+        font-weight: bold;
+        font-size: 0.875rem;
+        line-height: 1.25rem;
+    }
+
+    &__buttonsWrapper {
+        display: flex;
+        gap: 0.75rem;
+        margin-right: 0.75rem;
+    } 
 }

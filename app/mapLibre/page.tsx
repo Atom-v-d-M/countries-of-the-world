@@ -6,13 +6,18 @@ import { useRef, useState, useEffect, useMemo } from "react";
 import countryData from "./countryData.json";
 import { PrimaryHeader } from "@/components/primaryHeader";
 import { ProgressBar } from "@/components/progressBar";
+import { StandardButton } from "@/components/standardButton";
+import { FlagSVG, PauseSVG, RefreshSVG } from "@/components/svgComps";
 
 // Create allowedCountries array from JSON data
 const allowedCountries = countryData.map(country => country.primaryName);
 
+type QuizState = "paused" | "playing" | "awaitingStart"
 
 export default function MapLibrePage() {
   const mapRef = useRef<any>(null);
+
+  const [quizState, setQuizState] = useState<QuizState>("awaitingStart")
 
   const [foundCountries, setFoundCountries] = useState<string[]>([])
   const [labelsVisible, setLabelsVisible] = useState(false);
@@ -149,14 +154,6 @@ export default function MapLibrePage() {
                           // layer.id.includes('place_label');
     
     return isCountryLayer;
-  };
-
-  // Helper function to check if a country name is in our allowed list
-  const isAllowedCountry = (countryName: string) => {
-    return allowedCountries.some(country => 
-      countryName.toLowerCase().includes(country.toLowerCase()) ||
-      country.toLowerCase().includes(countryName.toLowerCase())
-    );
   };
 
   const handleMapLoad = (event: any) => {
@@ -305,6 +302,13 @@ export default function MapLibrePage() {
     });
   };
 
+
+  // need some modal view to appear when landing on the page similar to the quiz finished screen that allows you to start the quiz
+  // should hide all header actiaons and footer search bar and most likely the map while modal is displayed. 
+  // then add timer functionaltiy 
+  // will need to create a button comp to be used for the various buttons
+  // mobile first styling
+
   const progressPercentageValue = useMemo(() => {
     const decimalValue = Number((foundCountries?.length / allowedCountries.length).toFixed(2))
     return decimalValue * 100
@@ -313,9 +317,17 @@ export default function MapLibrePage() {
   return (
     <div className={styles.mapLibrePage}>
       <PrimaryHeader>
-        <div className={styles.mapLibrePage__progressWrapper}>
-          <span className={styles.mapLibrePage__progressText}>{`Progress: ${foundCountries?.length} / ${allowedCountries?.length}`}</span>
-          <ProgressBar progress={progressPercentageValue} />
+        <div className={styles.header}>
+          <div className={styles.header__progressWrapper}>
+            <span className={styles.header__progressText}>{`Progress: ${foundCountries?.length} / ${allowedCountries?.length}`}</span>
+            <ProgressBar progress={progressPercentageValue} />
+          </div>
+          <span>{`15:00`}</span>
+          <div className={styles.header__buttonsWrapper}>
+            <StandardButton label="Pause" clickCallback={() => {console.log("click")}} svgComp={<PauseSVG width={16} height={16} fill="#13A4EC" />} />
+            <StandardButton label="Reset" clickCallback={() => {console.log("click")}} svgComp={<RefreshSVG width={16} height={16} fill="#13A4EC" />} />
+            <StandardButton label="Give Up" clickCallback={() => {console.log("click")}} type="warning" svgComp={<FlagSVG width={16} height={16} fill="#EF4444" />} />
+          </div>
         </div>
       </PrimaryHeader>
       <div className={styles.mapLibrePage__searchArea}>
