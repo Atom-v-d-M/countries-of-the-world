@@ -714,5 +714,77 @@
   {
     "primaryName": "Niue",
     "alternativeNames": ["NU", "NIU"]
+  },
+  {
+    "primaryName": "Andorra",
+    "alternativeNames": ["AD", "AND", "Principality of Andorra"]
+  },
+  {
+    "primaryName": "Monaco",
+    "alternativeNames": ["MC", "MCO", "Principality of Monaco"]
+  },
+  {
+    "primaryName": "San Marino",
+    "alternativeNames": ["SM", "SMR", "Most Serene Republic of San Marino"]
+  },
+  {
+    "primaryName": "Liechtenstein",
+    "alternativeNames": ["LI", "LIE", "Principality of Liechtenstein"]
+  },
+  {
+    "primaryName": "Vatican City",
+    "alternativeNames": ["VA", "VAT", "Holy See", "Vatican"]
+  },
+  {
+    "primaryName": "Kosovo",
+    "alternativeNames": ["XK", "Republic of Kosovo"]
+  },
+  {
+    "primaryName": "Armenia",
+    "alternativeNames": ["AM", "ARM", "Հայաստան", "Republic of Armenia"]
+  },
+  {
+    "primaryName": "Azerbaijan",
+    "alternativeNames": ["AZ", "AZE", "Azərbaycan", "Republic of Azerbaijan"]
+  },
+  {
+    "primaryName": "Georgia",
+    "alternativeNames": ["GE", "GEO", "საქართველო"]
+  },
+  {
+    "primaryName": "Antigua and Barbuda",
+    "alternativeNames": ["AG", "ATG"]
+  },
+  {
+    "primaryName": "Barbados",
+    "alternativeNames": ["BB", "BRB"]
+  },
+  {
+    "primaryName": "Bahamas",
+    "alternativeNames": ["BS", "BHS", "The Bahamas", "Commonwealth of The Bahamas"]
+  },
+  {
+    "primaryName": "Saint Kitts and Nevis",
+    "alternativeNames": ["KN", "KNA", "Federation of Saint Kitts and Nevis"]
+  },
+  {
+    "primaryName": "Saint Lucia",
+    "alternativeNames": ["LC", "LCA"]
+  },
+  {
+    "primaryName": "Saint Vincent and the Grenadines",
+    "alternativeNames": ["VC", "VCT"]
+  },
+  {
+    "primaryName": "Grenada",
+    "alternativeNames": ["GD", "GRD"]
+  },
+  {
+    "primaryName": "Dominica",
+    "alternativeNames": ["DM", "DMA", "Commonwealth of Dominica"]
+  },
+  {
+    "primaryName": "Trinidad and Tobago",
+    "alternativeNames": ["TT", "TTO", "Republic of Trinidad and Tobago"]
   }
 ]
