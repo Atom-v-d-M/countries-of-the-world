@@ -19,7 +19,7 @@
         position: absolute;
         bottom: 49;
         left: 0;
-        z-index: 10;
+        z-index: 2;
         display: flex;
         align-items: center;
         justify-content: center;
@@ -70,5 +70,66 @@
         display: flex;
         gap: 0.75rem;
         margin-right: 0.75rem;
-    } 
+    }
+
+    &__timer {
+        display: flex;
+        gap: 0.5rem;
+        align-items: center;
+    }
+
+    &__timerText {
+        color: rgb(var(--color-primary-text-rgb));
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        font-weight: bold;
+        width: 22px;
+        text-align: center;
+
+        &--highlight {
+            width: unset;
+            color: #13A4EC;
+        }
+    }
+}
+
+.modalBackdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(17, 24, 39, 0.8);
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.awaitingStartModal {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    background-color: rgb(var(--color-background-rgb));
+    border-radius: 0.75rem;
+    gap: 0.5rem;
+    width: 300px;
+
+    &__heading {
+        color: rgb(var(--color-primary-text-rgb));
+        font-size: 1.25rem;
+        line-height: 1.75rem;
+        font-weight: bold;
+    }
+
+    &__subHeading {
+        font-size: 1rem;
+        font-weight: normal;
+        color: rgba(var(--color-secondary-text-rgb), 0.8)
+    }
+
+    &__buttonWrapper {
+        display: flex;
+        justify-content: flex-end;;
+    }
 }

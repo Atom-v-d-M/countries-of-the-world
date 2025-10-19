@@ -7,21 +7,35 @@ import countryData from "./countryData.json";
 import { PrimaryHeader } from "@/components/primaryHeader";
 import { ProgressBar } from "@/components/progressBar";
 import { StandardButton } from "@/components/standardButton";
-import { FlagSVG, PauseSVG, RefreshSVG } from "@/components/svgComps";
+import { FlagSVG } from "@/components/svgComps";
 
 // Create allowedCountries array from JSON data
 const allowedCountries = countryData.map(country => country.primaryName);
 
-type QuizState = "paused" | "playing" | "awaitingStart"
-
 export default function MapLibrePage() {
   const mapRef = useRef<any>(null);
 
-  const [quizState, setQuizState] = useState<QuizState>("awaitingStart")
+  const [activeQuiz, setActiveQuiz] = useState(false)
+  const [secondsRemaining, setSecondsRemaining] = useState(15 * 60);
 
   const [foundCountries, setFoundCountries] = useState<string[]>([])
   const [labelsVisible, setLabelsVisible] = useState(false);
   const [searchInput, setSearchInput] = useState<string>('');
+
+  useEffect(() => {
+    if (!activeQuiz) return
+    const interval = setInterval(() => {
+      setSecondsRemaining((prev) => {
+        if (prev <= 1) {
+          clearInterval(interval);
+          return 0;
+        }
+        return prev - 1;
+      });
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, [activeQuiz]);
 
   // Update map filter when foundCountries or labelsVisible changes
   useEffect(() => {
@@ -148,10 +162,10 @@ export default function MapLibrePage() {
     
     // Check if it's a country label layer by ID patterns
     const isCountryLayer = layer.id.includes('country')
-                          // layer.id.includes('admin') || 
-                          // layer.id.includes('place-country') ||
-                          // layer.id.includes('country-label') ||
-                          // layer.id.includes('place_label');
+      // layer.id.includes('admin') || 
+      // layer.id.includes('place-country') ||
+      // layer.id.includes('country-label') ||
+      // layer.id.includes('place_label');
     
     return isCountryLayer;
   };
@@ -302,33 +316,42 @@ export default function MapLibrePage() {
     });
   };
 
-
-  // need some modal view to appear when landing on the page similar to the quiz finished screen that allows you to start the quiz
-  // should hide all header actiaons and footer search bar and most likely the map while modal is displayed. 
-  // then add timer functionaltiy 
-  // will need to create a button comp to be used for the various buttons
-  // mobile first styling
-
   const progressPercentageValue = useMemo(() => {
     const decimalValue = Number((foundCountries?.length / allowedCountries.length).toFixed(2))
     return decimalValue * 100
   }, [foundCountries, allowedCountries])
 
+  const {timerMinutes, timerSeconds} = useMemo(() => {
+    const timerMinutes = Math.floor(secondsRemaining / 60);
+    const timerSeconds = secondsRemaining % 60;
+
+    return {
+      timerMinutes,
+      timerSeconds
+    }
+  }, [secondsRemaining])
+
   return (
     <div className={styles.mapLibrePage}>
       <PrimaryHeader>
-        <div className={styles.header}>
-          <div className={styles.header__progressWrapper}>
-            <span className={styles.header__progressText}>{`Progress: ${foundCountries?.length} / ${allowedCountries?.length}`}</span>
-            <ProgressBar progress={progressPercentageValue} />
+        {activeQuiz && (
+          <div className={styles.header}>
+            <div className={styles.header__progressWrapper}>
+              <span className={styles.header__progressText}>{`Progress: ${foundCountries?.length} / ${allowedCountries?.length}`}</span>
+              <ProgressBar progress={progressPercentageValue} />
+            </div>
+            <div className={styles.header__timer}>
+              <span className={styles.header__timerText}>{timerMinutes.toString().padStart(2, '0')}</span>
+              <span className={`${styles.header__timerText} ${styles["header__timerText--highlight"]}`}>:</span>
+              <span className={styles.header__timerText}>{timerSeconds.toString().padStart(2, '0')}</span>
+            </div>
+            <div className={styles.header__buttonsWrapper}>
+              {/* <StandardButton label="Pause" clickCallback={() => {console.log("click")}} svgComp={<PauseSVG width={16} height={16} fill="#13A4EC" />} />
+              <StandardButton label="Reset" clickCallback={() => {console.log("click")}} svgComp={<RefreshSVG width={16} height={16} fill="#13A4EC" />} /> */}
+              <StandardButton label="Give Up" clickCallback={() => {console.log("click")}} type="warning" svgComp={<FlagSVG width={16} height={16} fill="#EF4444" />} />
+            </div>
           </div>
-          <span>{`15:00`}</span>
-          <div className={styles.header__buttonsWrapper}>
-            <StandardButton label="Pause" clickCallback={() => {console.log("click")}} svgComp={<PauseSVG width={16} height={16} fill="#13A4EC" />} />
-            <StandardButton label="Reset" clickCallback={() => {console.log("click")}} svgComp={<RefreshSVG width={16} height={16} fill="#13A4EC" />} />
-            <StandardButton label="Give Up" clickCallback={() => {console.log("click")}} type="warning" svgComp={<FlagSVG width={16} height={16} fill="#EF4444" />} />
-          </div>
-        </div>
+        )}
       </PrimaryHeader>
       <div className={styles.mapLibrePage__searchArea}>
           <input 
@@ -340,10 +363,17 @@ export default function MapLibrePage() {
             onKeyDown={handleSearchSubmit}
           />
       </div>
+      {!activeQuiz && ( <div className={styles.modalBackdrop}>
+          <div className={styles.awaitingStartModal}>
+            <h1 className={styles.awaitingStartModal__heading}>GeoQuiz - MapLibre</h1>
+            <h2 className={styles.awaitingStartModal__subHeading}>15 Minutes</h2>
+            <div className={styles.awaitingStartModal__buttonWrapper}>
+              <StandardButton type="highlight" label="Start" clickCallback={() => {setActiveQuiz(true)}} />
+            </div>
+          </div>
+      </div>
+      )}
       <div className={styles.mapLibrePage__content}>
-        {/* <button onClick={toggleLabels} style={{ position: 'absolute', top: '10px', left: '10px', zIndex: 1 }}>
-          {labelsVisible ? 'Hide Labels' : 'Show Labels'}
-        </button> */}
         <div className={styles.mapLibrePage__mapWrapper}>
           <Map
             initialViewState={{
