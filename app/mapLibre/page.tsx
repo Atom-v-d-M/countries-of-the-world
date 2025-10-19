@@ -138,7 +138,7 @@ export default function MapLibrePage() {
   // Handle search on Enter key press
   const handleSearchSubmit = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      console.log('Search input:', searchInput);
+      // console.log('Search input:', searchInput);
 
       // Search for matching countries
       const searchTerm = searchInput.toLowerCase().trim();
@@ -155,10 +155,10 @@ export default function MapLibrePage() {
 
       if (matchingCountries.length > 0) {
         const foundCountry = matchingCountries[0]; // Should only be one match
-        console.log('Found country:', foundCountry.primaryName);
+        // console.log('Found country:', foundCountry.primaryName);
         setFoundCountries((prev) => [...prev, foundCountry.primaryName]);
       } else {
-        console.log('No countries found matching:', searchTerm);
+        // console.log('No countries found matching:', searchTerm);
       }
       
       setSearchInput(''); // Clear the input
