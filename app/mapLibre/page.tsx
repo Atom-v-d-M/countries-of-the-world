@@ -7,7 +7,7 @@ import countryData from "./countryData.json";
 import { PrimaryHeader } from "@/components/primaryHeader";
 import { ProgressBar } from "@/components/progressBar";
 import { StandardButton } from "@/components/standardButton";
-import { FlagSVG } from "@/components/svgComps";
+import { FlagSVG, RefreshSVG } from "@/components/svgComps";
 
 // Create allowedCountries array from JSON data
 const allowedCountries = countryData.map(country => country.primaryName);
@@ -15,15 +15,28 @@ const allowedCountries = countryData.map(country => country.primaryName);
 export default function MapLibrePage() {
   const mapRef = useRef<any>(null);
 
-  const [activeQuiz, setActiveQuiz] = useState(false)
+  const [quizState, setQuizState] = useState<"awaitingStart" | "active" | "results">("awaitingStart")
   const [secondsRemaining, setSecondsRemaining] = useState(15 * 60);
 
   const [foundCountries, setFoundCountries] = useState<string[]>([])
   const [labelsVisible, setLabelsVisible] = useState(false);
   const [searchInput, setSearchInput] = useState<string>('');
 
+  const handleRestart = () => {
+    setFoundCountries([])
+    setSearchInput('')
+    setSecondsRemaining(15 * 60)
+    setQuizState("active")
+  }
+
   useEffect(() => {
-    if (!activeQuiz) return
+    if (foundCountries?.length === allowedCountries?.length) {
+      setQuizState("results")
+    }
+  }, [foundCountries?.length, allowedCountries?.length])
+
+  useEffect(() => {
+    if (quizState !== "active") return
     const interval = setInterval(() => {
       setSecondsRemaining((prev) => {
         if (prev <= 1) {
@@ -35,7 +48,7 @@ export default function MapLibrePage() {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, [activeQuiz]);
+  }, [quizState]);
 
   // Update map filter when foundCountries or labelsVisible changes
   useEffect(() => {
@@ -334,7 +347,7 @@ export default function MapLibrePage() {
   return (
     <div className={styles.mapLibrePage}>
       <PrimaryHeader>
-        {activeQuiz && (
+        {quizState === "active" && (
           <div className={styles.header}>
             <div className={styles.header__progressWrapper}>
               <span className={styles.header__progressText}>{`Progress: ${foundCountries?.length} / ${allowedCountries?.length}`}</span>
@@ -348,7 +361,7 @@ export default function MapLibrePage() {
             <div className={styles.header__buttonsWrapper}>
               {/* <StandardButton label="Pause" clickCallback={() => {console.log("click")}} svgComp={<PauseSVG width={16} height={16} fill="#13A4EC" />} />
               <StandardButton label="Reset" clickCallback={() => {console.log("click")}} svgComp={<RefreshSVG width={16} height={16} fill="#13A4EC" />} /> */}
-              <StandardButton label="Give Up" clickCallback={() => {console.log("click")}} type="warning" svgComp={<FlagSVG width={16} height={16} fill="#EF4444" />} />
+              <StandardButton label="Give Up" clickCallback={() => {setQuizState("results")}} type="warning" svgComp={<FlagSVG width={16} height={16} fill="#EF4444" />} />
             </div>
           </div>
         )}
@@ -363,12 +376,32 @@ export default function MapLibrePage() {
             onKeyDown={handleSearchSubmit}
           />
       </div>
-      {!activeQuiz && ( <div className={styles.modalBackdrop}>
+      {quizState === "awaitingStart" && ( <div className={styles.modalBackdrop}>
           <div className={styles.awaitingStartModal}>
             <h1 className={styles.awaitingStartModal__heading}>GeoQuiz - MapLibre</h1>
             <h2 className={styles.awaitingStartModal__subHeading}>15 Minutes</h2>
             <div className={styles.awaitingStartModal__buttonWrapper}>
-              <StandardButton type="highlight" label="Start" clickCallback={() => {setActiveQuiz(true)}} />
+              <StandardButton type="highlight" label="Start" clickCallback={() => {setQuizState("active")}} />
+            </div>
+          </div>
+      </div>
+      )}
+      {quizState === "results" && ( <div className={styles.modalBackdrop}>
+          <div className={styles.resultsModal}>
+            <h1 className={styles.resultsModal__heading}>Quiz Complete!</h1>
+            <div className={styles.resultsModal__resultsWrapper}>
+              <div className={styles.resultsModal__resultRow}>
+                <span className={styles.resultsModal__resultLabel}>Score</span>
+                <span className={styles.resultsModal__resultText}>{`${foundCountries?.length} / ${allowedCountries?.length}`}</span>
+              </div>
+              <ProgressBar progress={progressPercentageValue} />
+              <div className={styles.resultsModal__resultRow}>
+                <span className={styles.resultsModal__resultLabel}>Time</span>
+                <span className={styles.resultsModal__resultText}>{`${timerMinutes.toString().padStart(2, '0')}:${timerSeconds.toString().padStart(2, '0')}`}</span>
+              </div>
+            </div>
+            <div className={styles.resultsModal__buttonWrapper}>
+              <StandardButton type="highlight" label="Try Again" clickCallback={handleRestart} svgComp={<RefreshSVG width={16} height={16} fill="#FFF" />} />
             </div>
           </div>
       </div>

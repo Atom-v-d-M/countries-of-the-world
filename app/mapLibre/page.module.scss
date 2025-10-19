@@ -3,6 +3,7 @@
     flex-direction: column;
     flex: 1;
     position: relative;
+    user-select: none;
 
     &__content {
         display: flex;
@@ -13,6 +14,7 @@
     &__mapWrapper {
         display: flex;
         flex: 1;
+        cursor: grab;
     }
 
     &__searchArea {
@@ -126,6 +128,55 @@
         font-size: 1rem;
         font-weight: normal;
         color: rgba(var(--color-secondary-text-rgb), 0.8)
+    }
+
+    &__buttonWrapper {
+        display: flex;
+        justify-content: flex-end;;
+    }
+}
+
+.resultsModal {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    width: 448px;
+    background-color: rgb(var(--color-background-rgb));
+    border-radius: 0.75rem;
+    gap: 1.5rem;
+
+    &__heading {
+        color: rgb(var(--color-primary-text-rgb));
+        font-size: 1.875rem;
+        line-height: 2.25rem;
+        font-weight: bold;
+        text-align: center;
+    }
+
+    &__resultsWrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        background-color: rgb(31 41 55 / 0.5);
+    }
+
+    &__resultRow {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    &__resultLabel {
+        color: rgb(var(--color-general-text-rgb));
+        font-size: 1rem;
+    }
+
+    &__resultText {
+        color: rgb(var(--color-primary-text-rgb));
+        font-size: 18px;
+        font-weight: bold;
     }
 
     &__buttonWrapper {
